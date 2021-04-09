@@ -1,12 +1,11 @@
-import './App.css';
-import Board from './Board/Board';
+import Board from './Board/Board.jsx';
 
-const App = () => {
-  return(
-    <div className="App">
-      <Board></Board>
-    </div>
-  )
-}
+import './App.css';
+
+const App = () => (
+  <div className="App">
+    <Board></Board>
+  </div>
+);
 
 export default App;
