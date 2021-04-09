@@ -5,6 +5,8 @@ import {
   reverseLinkedList,
   useInterval,
 } from '../lib/utils.js';
+import Gameover from '../assets/gameover.PNG'
+
 
 import './Board.css';
 
@@ -68,7 +70,8 @@ const Board = () => {
   const [foodShouldReverseDirection, setFoodShouldReverseDirection] = useState(
     false,
   );
-  const [{game}, dispatch] = useStoreContext()
+  const [{game, gameOver}, dispatch] = useStoreContext()
+  const [activity, setActivity] = useState(true)
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
@@ -80,7 +83,7 @@ const Board = () => {
   // `useEffect` above. See the article linked above the `useInterval`
   // definition for details.
   useInterval(() => {
-    moveSnake();
+    if (activity) moveSnake();
   }, 150);
 
   const handleKeydown = e => {
@@ -203,11 +206,14 @@ const Board = () => {
     // setFoodCell(snakeLLStartingValue.cell + 5);
     // setSnakeCells(new Set([snakeLLStartingValue.cell]));
     // setDirection(Direction.RIGHT);
-    dispatch({type:'GAMEOVER'})
+    dispatch({type:"GAMEOVER"})
+    setActivity(false)
+    console.log('gameover')
   };
 
   return (
     <>
+    <div style={{display: game ? 'block' : 'none'}}>
       <h1>Score: {score}</h1>
       <div className="board">
         {board.map((row, rowIdx) => (
@@ -224,6 +230,7 @@ const Board = () => {
           </div>
         ))}
       </div>
+    </div>
     </>
   );
 };

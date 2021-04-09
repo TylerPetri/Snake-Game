@@ -1,7 +1,7 @@
-import { useContext, createContext } from 'react';
+import { useContext, createContext, useReducer } from 'react';
 
 const gameMode = {
-    start: true, game: true, end: true
+    start: false, game: true, end: false
 }
 
 const gameReducer = (state, action) => {
