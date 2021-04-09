@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useStoreContext } from '../lib/globalstore'
 import {
   randomIntFromInterval,
   reverseLinkedList,
@@ -67,6 +68,7 @@ const Board = () => {
   const [foodShouldReverseDirection, setFoodShouldReverseDirection] = useState(
     false,
   );
+  const [{game}, dispatch] = useStoreContext()
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
@@ -195,12 +197,13 @@ const Board = () => {
   };
 
   const handleGameOver = () => {
-    setScore(0);
-    const snakeLLStartingValue = getStartingSnakeLLValue(board);
-    setSnake(new LinkedList(snakeLLStartingValue));
-    setFoodCell(snakeLLStartingValue.cell + 5);
-    setSnakeCells(new Set([snakeLLStartingValue.cell]));
-    setDirection(Direction.RIGHT);
+    // setScore(0);
+    // const snakeLLStartingValue = getStartingSnakeLLValue(board);
+    // setSnake(new LinkedList(snakeLLStartingValue));
+    // setFoodCell(snakeLLStartingValue.cell + 5);
+    // setSnakeCells(new Set([snakeLLStartingValue.cell]));
+    // setDirection(Direction.RIGHT);
+    dispatch({type:'GAMEOVER'})
   };
 
   return (
