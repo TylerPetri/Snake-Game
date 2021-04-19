@@ -70,7 +70,7 @@ const Board = () => {
   const [foodShouldReverseDirection, setFoodShouldReverseDirection] = useState(
     false,
   );
-  const [{activity, game, gameOver}, dispatch] = useStoreContext()
+  const [{activity, start, game, end}, dispatch] = useStoreContext()
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
@@ -100,46 +100,46 @@ const Board = () => {
   };
 
   const moveSnake = () => {
-    const currentHeadCoords = {
-      row: snake.head.value.row,
-      col: snake.head.value.col,
-    };
+      const currentHeadCoords = {
+        row: snake.head.value.row,
+        col: snake.head.value.col,
+      };
 
-    const nextHeadCoords = getCoordsInDirection(currentHeadCoords, direction);
-    if (isOutOfBounds(nextHeadCoords, board)) {
-      handleGameOver();
-      return;
-    }
-    const nextHeadCell = board[nextHeadCoords.row][nextHeadCoords.col];
-    if (snakeCells.has(nextHeadCell)) {
-      handleGameOver();
-      return;
-    }
+      const nextHeadCoords = getCoordsInDirection(currentHeadCoords, direction);
+      if (isOutOfBounds(nextHeadCoords, board)) {
+        handleGameOver();
+        return;
+      }
+      const nextHeadCell = board[nextHeadCoords.row][nextHeadCoords.col];
+      if (snakeCells.has(nextHeadCell)) {
+        handleGameOver();
+        return;
+      }
 
-    const newHead = new LinkedListNode({
-      row: nextHeadCoords.row,
-      col: nextHeadCoords.col,
-      cell: nextHeadCell,
-    });
-    const currentHead = snake.head;
-    snake.head = newHead;
-    currentHead.next = newHead;
+      const newHead = new LinkedListNode({
+        row: nextHeadCoords.row,
+        col: nextHeadCoords.col,
+        cell: nextHeadCell,
+      });
+      const currentHead = snake.head;
+      snake.head = newHead;
+      currentHead.next = newHead;
 
-    const newSnakeCells = new Set(snakeCells);
-    newSnakeCells.delete(snake.tail.value.cell);
-    newSnakeCells.add(nextHeadCell);
+      const newSnakeCells = new Set(snakeCells);
+      newSnakeCells.delete(snake.tail.value.cell);
+      newSnakeCells.add(nextHeadCell);
 
-    snake.tail = snake.tail.next;
-    if (snake.tail === null) snake.tail = snake.head;
+      snake.tail = snake.tail.next;
+      if (snake.tail === null) snake.tail = snake.head;
 
-    const foodConsumed = nextHeadCell === foodCell;
-    if (foodConsumed) {
-      // This function mutates newSnakeCells.
-      growSnake(newSnakeCells);
-      if (foodShouldReverseDirection) reverseSnake();
-      handleFoodConsumption(newSnakeCells);
-    }
-
+      const foodConsumed = nextHeadCell === foodCell;
+      if (foodConsumed) {
+        // This function mutates newSnakeCells.
+        growSnake(newSnakeCells);
+        if (foodShouldReverseDirection) reverseSnake();
+        handleFoodConsumption(newSnakeCells);
+      }
+    
     setSnakeCells(newSnakeCells);
   };
 
@@ -205,7 +205,6 @@ const Board = () => {
     setFoodCell(snakeLLStartingValue.cell + 5);
     setSnakeCells(new Set([snakeLLStartingValue.cell]));
     dispatch({type:"GAMEOVER"})
-    console.log('gameover')
   };
 
   return (
