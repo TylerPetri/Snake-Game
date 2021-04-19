@@ -1,0 +1,23 @@
+.bigContainer {
+    border: 30px solid rgb(165, 101, 42);
+    height: max-content;
+    width: max-content;
+    border-radius: 25px;
+}
+
+.startContainer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6) 
+}
+
+.dropStart {
+    margin: 20% auto;
+    width: 200px;
+    height: 300px;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+}

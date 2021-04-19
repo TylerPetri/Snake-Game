@@ -70,8 +70,7 @@ const Board = () => {
   const [foodShouldReverseDirection, setFoodShouldReverseDirection] = useState(
     false,
   );
-  const [{game, gameOver}, dispatch] = useStoreContext()
-  const [activity, setActivity] = useState(true)
+  const [{activity, game, gameOver}, dispatch] = useStoreContext()
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
@@ -200,20 +199,18 @@ const Board = () => {
   };
 
   const handleGameOver = () => {
-    // setScore(0);
-    // const snakeLLStartingValue = getStartingSnakeLLValue(board);
-    // setSnake(new LinkedList(snakeLLStartingValue));
-    // setFoodCell(snakeLLStartingValue.cell + 5);
-    // setSnakeCells(new Set([snakeLLStartingValue.cell]));
-    // setDirection(Direction.RIGHT);
+    setScore(0);
+    const snakeLLStartingValue = getStartingSnakeLLValue(board);
+    setSnake(new LinkedList(snakeLLStartingValue));
+    setFoodCell(snakeLLStartingValue.cell + 5);
+    setSnakeCells(new Set([snakeLLStartingValue.cell]));
     dispatch({type:"GAMEOVER"})
-    setActivity(false)
     console.log('gameover')
   };
 
   return (
     <>
-    <div style={{display: game ? 'block' : 'none'}}>
+    <div>
       <h1>Score: {score}</h1>
       <div className="board">
         {board.map((row, rowIdx) => (

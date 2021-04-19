@@ -1,17 +1,17 @@
 import { useContext, createContext, useReducer } from 'react';
 
 const gameMode = {
-    start: false, game: true, end: false
+    start: true, game: false, end: false, activity: false
 }
 
 const gameReducer = (state, action) => {
     switch (action.type) {
         case "START_SCREEN":
-            return { ...state, start: true, game: false, end: false}
+            return { ...state, start: true, game: false, activity: false, end: false}
         case "GAME_START":
-            return { ...state, start: false, game: true, end: false}
+            return { ...state, start: false, game: true, activity: true, end: false}
         case "GAMEOVER":
-            return { ...state, start: false, game: false, end: true}
+            return { ...state, start: false, game: false, activity: false, end: true}
         default:
             console.log(`Invalide action type: ${action.type}`)
             return state

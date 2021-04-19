@@ -1,0 +1,28 @@
+.gameoverContainer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6)
+}
+
+.dropGameover {
+    margin: 20% auto;
+    width: 200px;
+    height: 300px;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px
+}
+
+.goImg {
+    width: 100%;
+}
+
+button {
+    margin: 8px;
+}
