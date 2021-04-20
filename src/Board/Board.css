@@ -1,5 +1,6 @@
 .board {
   outline: 2px solid rgb(134, 154, 189);
+  margin: 2px;
 }
 
 .row {
@@ -23,4 +24,10 @@
 
 .cell-purple {
   background-color: purple;
+}
+
+h4 {
+  font-family: 'Press Start 2P';
+  margin: 0;
+  padding: 50px 0
 }

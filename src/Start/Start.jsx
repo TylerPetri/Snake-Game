@@ -3,6 +3,8 @@ import Board from '../Board/Board'
 import Gameover from '../Gameover/Gameover'
 import { useEffect, useState } from 'react'
 import './Start.css'
+import { GrTrophy } from 'react-icons/gr'
+import move from '../assets/move.PNG'
 
 function Start(){
 
@@ -21,6 +23,8 @@ function Start(){
         dispatch({type:"GAME_BOARD"})
     }
 
+    const highscore = localStorage.getItem("SnakeGameHighScore")
+
     return(
         <div className="bigContainer">
             <div className="countdownBox" style={{display: countdown ? 'block' : 'none'}}>
@@ -31,7 +35,9 @@ function Start(){
             </div>
             <div className="startContainer" style={{display: start ? 'block' : 'none'}}>
                 <div className="dropStart">
-                    <button onClick={closeStart}>Start</button>
+                    <div className="highscore"><GrTrophy/> : {highscore}</div>
+                    <button className="startBtn" onClick={closeStart}>Start</button>
+                    <img src={move} alt="Arrow keys to move" className="moveKeys"/>
                 </div>
             </div>
             <Gameover/>

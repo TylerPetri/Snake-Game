@@ -18,7 +18,7 @@
     margin: 250px auto;
     width: 200px;
     height: 300px;
-    background-color: cornflowerblue;
+    background-color: rgb(46, 163, 75);
     border-radius: 20px;
 }
 
@@ -43,4 +43,30 @@
     transition: 1s ease-in;
     opacity: 1;
     padding-bottom:40px;
+}
+
+.highscore {
+    padding-top: 20px;
+}
+
+.startBtn{
+    margin-top: 30px;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    color: white;
+    background-color:cornflowerblue;
+    border: none;
+    font-family: 'Press Start 2P';
+    font-size: 15px;
+}
+
+.startBtn:hover {
+    background-color: rgb(204, 204, 3);
+    color: purple
+}
+
+.moveKeys {
+    width: 50%;
+    margin-top: 30px;
 }

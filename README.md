@@ -1,6 +1,5 @@
 ## ChatCh4n
 
-![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## Description
 
@@ -14,11 +13,7 @@ Made in react
 
 ## Usage
 
-![Usage](https://media.giphy.com/media/yTBT0PWMmaDaIsUtT8/giphy.gif)
-
-## License
-
-MIT
+![Usage](https://media.giphy.com/media/w9mfy63BHgH9uozYhL/giphy.gif)
 
 ## Contributing
 

@@ -56,7 +56,7 @@ const getStartingSnakeLLValue = board => {
 };
 
 const Board = () => {
-  const [score, setScore] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0)
   const [board, setBoard] = useState(createBoard(BOARD_SIZE));
   const [snake, setSnake] = useState(
     new LinkedList(getStartingSnakeLLValue(board)),
@@ -70,7 +70,7 @@ const Board = () => {
   const [foodShouldReverseDirection, setFoodShouldReverseDirection] = useState(
     false,
   );
-  const [{activity, start, game, end}, dispatch] = useStoreContext()
+  const [{activity, score}, dispatch] = useStoreContext()
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
@@ -195,11 +195,12 @@ const Board = () => {
 
     setFoodCell(nextFoodCell);
     setFoodShouldReverseDirection(nextFoodShouldReverseDirection);
-    setScore(score + 1);
+    // setCurrentScore(currentScore + 1)
+    dispatch({type:'SCORE', data: {score:score+1}});
   };
 
   const handleGameOver = () => {
-    setScore(0);
+    if (score > localStorage.getItem("SnakeGameHighScore")) localStorage.SnakeGameHighScore = score
     const snakeLLStartingValue = getStartingSnakeLLValue(board);
     setSnake(new LinkedList(snakeLLStartingValue));
     setFoodCell(snakeLLStartingValue.cell + 5);
@@ -210,7 +211,7 @@ const Board = () => {
   return (
     <>
     <div>
-      <h1>Score: {score}</h1>
+      <h4>Score: {score}</h4>
       <div className="board">
         {board.map((row, rowIdx) => (
           <div key={rowIdx} className="row">
