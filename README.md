@@ -1,4 +1,4 @@
-## ChatCh4n
+## Snake game
 
 
 ## Description
