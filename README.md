@@ -15,6 +15,14 @@ Made in react
 
 ![Usage](https://media.giphy.com/media/w9mfy63BHgH9uozYhL/giphy.gif)
 
+## Running the tests
+
+There were no automated tests during the process of this application.
+
+## Built with
+
+React, React Hooks, CSS
+
 ## Contributing
 
 There are many ways in which you can participate in the project, for example: 
